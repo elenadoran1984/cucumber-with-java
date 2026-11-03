@@ -1,5 +1,6 @@
 package ivet.steps;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import ivet.base.BaseUtil;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
@@ -19,23 +20,21 @@ import static org.junit.Assert.assertTrue;
 public class Steps extends BaseUtil {
 
     private BaseUtil baseUtil;
+    private WebDriver driver;
 
     public Steps(BaseUtil baseUtil){
         this.baseUtil = baseUtil;
     }
 
-    private WebDriver driver;
-
     @Before()
     public void setup() {
         System.setProperty("webdriver.chrome.driver", "path/chromedriver.exe");
+        //or WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
 
     @Given("I am in the login page of the Ivet Application1")
     public void i_am_in_the_login_page_of_the_ivet_application1() {
-        System.setProperty("webdriver.chrome.driver", "path/chromedriver.exe");
-        driver = new ChromeDriver();
         driver.get("https://www.ivet.ro/ro/login.html");
     }
 
@@ -49,7 +48,7 @@ public class Steps extends BaseUtil {
     @Then("I should be taken to the Overview Page1")
     public void i_should_be_taken_to_the_overview_page1() throws InterruptedException {
         Thread.sleep(3000);
-        driver.findElement(By.xpath("//*[@id=\"fsm\"]/div")).isDisplayed();
+        driver.findElement(By.xpath("//*[@id=\"body-container\"]")).isDisplayed();
         driver.findElement(By.cssSelector("#header-login-wrapper>label")).click();
         driver.findElement(By.cssSelector("#header-login-wrapper > label > ul > li:nth-child(4) > a")).click();
     }
@@ -57,8 +56,6 @@ public class Steps extends BaseUtil {
     @Given("I am in the login page2")
     @Given("I am in the login page of the Ivet Application2")
     public void i_am_in_the_login_page_of_the_ivet_application2() {
-        System.setProperty("webdriver.chrome.driver", "path/chromedriver.exe");
-        driver = new ChromeDriver();
         driver.get("https://www.ivet.ro/ro/login.html");
     }
 
@@ -72,15 +69,13 @@ public class Steps extends BaseUtil {
     @Then("I should be taken to the Overview Page2")
     public void i_should_be_taken_to_the_overview_page2() throws InterruptedException {
         Thread.sleep(3000);
-        driver.findElement(By.xpath("//*[@id=\"fsm\"]/div")).isDisplayed();
+        driver.findElement(By.xpath("//*[@id=\"body-container\"]")).isDisplayed();
         driver.findElement(By.cssSelector("#header-login-wrapper>label")).click();
         driver.findElement(By.cssSelector("#header-login-wrapper > label > ul > li:nth-child(4) > a")).click();
     }
 
     @Given("I am in the login page of the Ivet Application3")
     public void i_am_in_the_login_page_of_the_ivet_application3() {
-        System.setProperty("webdriver.chrome.driver", "path/chromedriver.exe");
-        driver = new ChromeDriver();
         driver.get("https://www.ivet.ro/ro/login.html");
     }
 
@@ -96,15 +91,13 @@ public class Steps extends BaseUtil {
     @Then("I should be taken to the Overview Page3")
     public void i_should_be_taken_to_the_overview_page3() throws InterruptedException {
         Thread.sleep(3000);
-        driver.findElement(By.xpath("//*[@id=\"fsm\"]/div")).isDisplayed();
+        driver.findElement(By.xpath("//*[@id=\"body-container\"]")).isDisplayed();
         driver.findElement(By.cssSelector("#header-login-wrapper>label")).click();
         driver.findElement(By.cssSelector("#header-login-wrapper > label > ul > li:nth-child(4) > a")).click();
     }
 
     @Given("I am in the login page of the Ivet Application4")
     public void i_am_in_the_login_page_of_the_ivet_application4() {
-        System.setProperty("webdriver.chrome.driver", "path/chromedriver.exe");
-        driver = new ChromeDriver();
         driver.get("https://www.ivet.ro/ro/login.html");
     }
 
@@ -125,7 +118,7 @@ public class Steps extends BaseUtil {
     @Then("I should be taken to the Overview Page4")
     public void i_should_be_taken_to_the_overview_page4() throws InterruptedException {
         Thread.sleep(3000);
-        driver.findElement(By.xpath("//*[@id=\"fsm\"]/div")).isDisplayed();
+        driver.findElement(By.xpath("//*[@id=\"body-container\"]")).isDisplayed();
         driver.findElement(By.cssSelector("#header-login-wrapper>label")).click();
         driver.findElement(By.cssSelector("#header-login-wrapper > label > ul > li:nth-child(4) > a")).click();
 
@@ -148,7 +141,7 @@ public class Steps extends BaseUtil {
     @Then("I should be taken to the Overview Page5")
     public void i_should_be_taken_to_the_overview_page5() throws InterruptedException {
         Thread.sleep(3000);
-        driver.findElement(By.xpath("//*[@id=\"fsm\"]/div")).isDisplayed();
+        driver.findElement(By.xpath("//*[@id=\"body-container\"]")).isDisplayed();
         driver.findElement(By.cssSelector("#header-login-wrapper>label")).click();
         driver.findElement(By.cssSelector("#header-login-wrapper > label > ul > li:nth-child(4) > a")).click();
     }
@@ -173,11 +166,12 @@ public class Steps extends BaseUtil {
     public void i_should_be_taken_to_the_overview_page6() throws InterruptedException {
         Thread.sleep(3000);
 
-        driver.findElement(By.xpath("//*[@id=\"fsm\"]/div")).isDisplayed();
+        driver.findElement(By.xpath("//*[@id=\"body-container\"]")).isDisplayed();
         driver.findElement(By.cssSelector("#header-login-wrapper>label")).click();
         driver.findElement(By.cssSelector("#header-login-wrapper > label > ul > li:nth-child(1) > a")).click();
 
-        String actualUserFullName = driver.findElement(By.cssSelector("#profile_form > div.item.profile-address-block.profile-address-block-billing > a > div:nth-child(1) > span.address-first-name")).getText();
+        //String actualUserFullName = driver.findElement(By.cssSelector("#profile_form > div.item.profile-address-block.profile-address-block-billing > a > div:nth-child(1) > span.address-first-name")).getText();
+        String actualUserFullName = driver.findElement(By.xpath("//*[@id=\"profile_form\"]/div[2]/a/div[1]")).getText();
         System.out.println(baseUtil.userFullName);
         assertTrue(actualUserFullName, actualUserFullName.contains(baseUtil.userFullName));
 

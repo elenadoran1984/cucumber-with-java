@@ -14,13 +14,13 @@
     </organization>
 
     <name>End-to-end tests Seed Project</name>
-    <description>This e2e testing project is desinged to be used as a quickstart.</description>
+    <description>This e2e testing project is designed to be used as a quickstart.</description>
     <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <cucumber.version>7.15.0</cucumber.version>
         <selenium-java.version>4.17.0</selenium-java.version>
         <jasypt.version>1.9.3</jasypt.version>
@@ -86,7 +86,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.1.0</version>
+            <version>6.3.3</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
