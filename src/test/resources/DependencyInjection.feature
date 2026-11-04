@@ -12,6 +12,6 @@ Feature: Login functionality
     Then I should be taken to the Overview Page6
 
     Examples:
-      |username|password|userFullName|
-      |"email1"|"password1"|"userfullname1"|
-      |"email2"|"password2"|"userfullname2"|
+      | username                  | password  | userFullName  |
+      | "drehauselena@yahoo.com"  | "drehaus" | "Test Elena"  |
+      | "drehausrodica@yahoo.com" | "drehaus" | "Test Rodica" |

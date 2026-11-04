@@ -28,7 +28,7 @@ public class Steps extends BaseUtil {
 
     @Before()
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "path/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "chromedriver/chromedriver.exe");
         //or WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
